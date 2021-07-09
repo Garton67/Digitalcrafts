@@ -1,20 +1,20 @@
-todolist = []
+tasks = []
 
 
-def add_task(user_input, todolist):
+def add_task(user_input, tasks):
     task = input("Enter the task: ")
     priority = input("Enter the priority (high/medium/low): ")
 
     todo = {"task": task, "Priority": priority}
-    todolist.append(todo)
+    tasks.append(todo)
 
-    return todolist
+    return tasks
 
-def view_task(user_input, todolist):
-    if len(todolist) == 0:
+def view_task(user_input, tasks):
+    if len(tasks) == 0:
         print("You have no tasks.")
-    for i in range(len(todolist)):
-        print(f"{i + 1} - {todolist[i]['task']} - {todolist[i]['Priority']}")
+    for i in range(len(tasks)):
+        print(f"{i + 1} - {tasks[i]['task']} - {tasks[i]['Priority']}")
 
 
 while True:
@@ -22,10 +22,10 @@ while True:
         "Press 1 to add task, 2 to view all task, q to quit: ")
 
     if user_input == '1':
-        add_task(user_input, todolist)
+        add_task(user_input, tasks)
 
     elif user_input == '2':
-        view_task(user_input, todolist)
+        view_task(user_input, tasks)
 
     elif user_input == 'q':
         print("Goodbye.")
@@ -33,3 +33,4 @@ while True:
 
     else:
         print("Try again.")
+
