@@ -19,7 +19,7 @@ def view_task(user_input, tasks):
 
 while True:
     user_input = input(
-        "Press 1 to add task, 2 to view all task, q to quit: ")
+        "Press 1 to add task, 2 to view all tasks, q to quit: ")
 
     if user_input == '1':
         add_task(user_input, tasks)
