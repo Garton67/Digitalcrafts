@@ -21,6 +21,8 @@ while True:
     print("1 - Add Store")
     print("2 - Add item")
     print("3 - View all lists")
+    print("4 - Delete a Store")
+    print("5 - Delete a Item from a Store")
     print("q to quit")
 
     choice = input("Enter Choice:")
@@ -32,7 +34,7 @@ while True:
         shopping_lists.append(store)
 
     elif choice == "2":
-        for index in range(0, len(shopping_lists)):
+        for index in range(0, len(shopping_lists)):                                                           
             print(f"{index + 1}--{shopping_lists[index].store}")
         
             
@@ -51,8 +53,28 @@ while True:
             print(f"{store.store} - {store.address}")
             for index in range(0, len(store.items)):
                 title = store.items[index].title
-                print(title)
-            
+                print(f" - {item.store}")
+
+    elif choice == "4":
+        for i in range(0, len(shopping_lists)):
+            print(f"{i +1}--{shopping_lists[i].items}")
+            choice2 = int(input("Select the number of store."))
+            del shopping_lists[choice2 -1]
+            print("List has been deleted")
+    
+    elif choice == "5":
+        for i in range(0, len(shopping_lists)):
+            print(f"{shopping_lists[i].items}")
+            store = shopping_lists[i]
+            choice3 = int(input("Enter store choice: "))
+            store = shopping_lists[choice3 -1]
+        for i in range(0, len(store.items)):
+            print(f"{i +1}--{store.items[i].title}")
+            itemToDeleteIndex = int(input("Enter item to delete: "))
+        del store.items[itemToDeleteIndex]
+        print("Item deleted")
+
+
 
     elif choice =="q":
         break
