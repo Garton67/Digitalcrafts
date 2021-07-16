@@ -24,11 +24,11 @@ def display_tables():
 print("\nWelcome To Pooltable Manager!")
 
 while True:
-
+    display_tables()
     print("\n* Main Menu *")
     print("1 - Check Out a Pool Table")
     print("2 - Return a Pool Table")
-    print("3 - View status of Pool Tables")
+    #print("3 - View status of Pool Tables")
     print("q - Quit app")
 
     choice = input("\nSelect an option from the menu: ")
@@ -57,7 +57,7 @@ while True:
             print(f"Pool Table {table_number} has been returned.")
         
              
-    elif choice == "3":
+    #elif choice == "3":
         display_tables()
 
     elif choice == "q":
