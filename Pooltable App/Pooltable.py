@@ -1,59 +1,65 @@
-tables = []
-import datetime
-import pooltable_class
+from pooltable_class import PoolTable
+from datetime import date
+
+pool_tables = []
 
 
-
-class PoolTable:
-  def __init__(self, occupied):
-    self.occupied = True
-    self.start_time = datetime.datetime.now()
-    self.end_time = datetime.datetime.now()
-    self.time_played = ""
-    self.cost = 1
-    self.identity = ""
+for i in range(1, 13):
+    pool_tables.append(PoolTable(i))
 
 
-  def checkout(self):
-    self.occupied == False
-    self.start_time = datetime.now()
-
-  def checkin(self):
-    self.occupied == True
-    self.end_time == datetime.now()
-
-  def time_played(self):
-      if self.start_time == None:
-        return datetime.now()
-
-  def view_tables():
-      i = 1
-      print("***Pool tables***")
-      for items in tables:
-        if items.occupied == "Available":
-          print(f"Table {tables} is {items.occupied}")
+def display_tables():
+    print("\nCurrent Status of Pool Tables")
+       
+    for table in pool_tables:
+  
+        if table.is_occupied == False:
+            status = "Not Occupied"
+            print(f"Pool Table {table.number}: {status}")
+        else:
+            status = "Occupied"
+            print(f"Pool Table {table.number}: {status} - Start Time: {table.start_time}")
 
 
-for index in range(12):
-    table = PoolTable(index+1)
-    tables.append(table)
+print("\nWelcome To Pooltable Manager!")
 
+while True:
 
+    print("\n* Main Menu *")
+    print("1 - Check Out a Pool Table")
+    print("2 - Return a Pool Table")
+    print("3 - View status of Pool Tables")
+    print("q - Quit app")
 
-
-while True:  
-    print("-----PoolTable Program-----")
-    print("Press 1 to Checkout table")
-    print("Press 2 to Check-In table")
-    print("Press 3 to View Pooltables")
-    print("Press q to Quit")
-    choice = input("What do you want to do?")   
+    choice = input("\nSelect option from the menu: ")
 
     if choice == "1":
-      checkout()
-    if choice == "2":
-      checkin()
-    if choice == "3":
-      view_tables()
-    if choice == "q":
+        display_tables()
+        table_number = int(input("\nEnter table number to check out: "))
+        table = pool_tables[table_number - 1]
+        if table.is_occupied == True:
+            print("\nThis table is occupied.")
+                
+        else:
+            table.check_out()
+            print(f"\nPool Table {table_number} has been checked out.")
+                       
+
+    elif choice == "2":
+        display_tables()
+        table_number = int(input("\nEnter The Table Number To Check In: "))
+        table = pool_tables[table_number - 1]
+        if table.is_occupied == False:
+            print("\nThis table has not been checked out.")
+        
+        else:
+            table.return_table()
+            print(f"Pool Table {table_number} has been returned.")
+        
+             
+    elif choice == "3":
+        display_tables()
+
+    elif choice == "q":
+        print("\nExiting Pooltable Manager.")
         break
