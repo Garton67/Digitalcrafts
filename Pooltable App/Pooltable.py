@@ -31,7 +31,7 @@ while True:
     print("3 - View status of Pool Tables")
     print("q - Quit app")
 
-    choice = input("\nSelect option from the menu: ")
+    choice = input("\nSelect an option from the menu: ")
 
     if choice == "1":
         display_tables()

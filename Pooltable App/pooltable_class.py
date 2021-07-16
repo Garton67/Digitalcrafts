@@ -1,28 +1,28 @@
+from datetime import datetime
+
+fmt = "%H:%M:%S"
 class PoolTable:
-  def __init__(self, occupied):
-    self.occupied = True
-    self.start_time = datetime.datetime.now()
-    self.end_time = datetime.datetime.now()
-    self.time_played = ""
-    self.cost = 1
-    self.identity = ""
+    def __init__(self, number):
+        self.number = number
+        self.is_occupied = False
+        self.start_time = None
+        self.end_time = None
+        self.total_time = None
+        self.elapsed_time = None
+        self.cost = None
 
+    def check_out(self):
+        now = datetime.now()
+        time = now.strftime(fmt)
+        self.is_occupied = True
+        self.start_time = time
 
-  def checkout(self):
-    self.occupied == False
-    self.start_time = datetime.now()
+    def return_table(self):
+        now = datetime.now()
+        time = now.strftime(fmt)
+        self.is_occupied = False
+        self.end_time = time
 
-  def checkin(self):
-    self.occupied == True
-    self.end_time == datetime.now()
-
-  def time_played(self):
-      if self.start_time == None:
-        return datetime.now()
-
-  def view_tables():
-      i = 1
-      print("***Pool tables***")
-      for items in tables:
-        if items.occupied == "Available":
-          print(f"Table {tables} is {items.occupied}")
+    def delta_total(self):
+        delta = datetime.strptime(self.end_time, fmt) - datetime.strptime(self.start_time, fmt)
+        self.total_time = delta
