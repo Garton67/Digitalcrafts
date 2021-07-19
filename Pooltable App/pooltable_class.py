@@ -26,3 +26,4 @@ class PoolTable:
     def delta_total(self):
         delta = datetime.strptime(self.end_time, fmt) - datetime.strptime(self.start_time, fmt)
         self.total_time = delta
+        

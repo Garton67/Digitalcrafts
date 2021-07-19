@@ -1,18 +1,18 @@
 p, ul {
-	font-size: 18px;
+	font-size: 20px;
 	line-height: 2;
 	letter-spacing: 1.5px;
-	color: whitesmoke
+	color: rgb(255, 112, 172)
 }
 html {
-	background-color: #a5dffa;
+	background-color: #1fa3e0;
 }
 body {
 	width: 660px;
 	margin: 0 auto;
 	background-color: #97e98c;
 	padding: 0 20px 20px 20px;
-	border: 7px solid rgb(247, 243, 243);
+	border: 7px solid rgb(247, 243, 247);
 	margin-top: 30px;
 	margin-bottom: 30px;
 }
@@ -27,16 +27,16 @@ h1 {
 h2 {
 	font-size: 25px;
 	text-align: center;
-	color:rgb(157, 206, 79)
+	color:rgb(198, 230, 20)
   }
 img {
 	display: block;
 	margin: 0 auto;
-	width: 500px;
+	width: 600px;
 	height: 300px;
 }
 a:link {
-	color: rgb(151, 167, 151);
+	color: rgb(13, 24, 13);
 	background-color: transparent;
 	text-decoration: none;
   }
