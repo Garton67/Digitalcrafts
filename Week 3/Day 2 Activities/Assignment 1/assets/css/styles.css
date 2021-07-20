@@ -1,0 +1,82 @@
+.black{
+    background-color:black;
+    display: table-cell;
+    height: 30px;
+    width: 70px;
+    border: solid 2px black;
+    margin-top: 250px;
+}
+.red{
+    background-color:rgb(240, 12, 12);
+    display: table-cell;
+    height: 30px;
+    width: 70px;
+    border: solid 2px black
+}
+.yellow{
+    background-color:rgb(236, 240, 12);
+    display: table-cell;
+    height: 30px;
+    width: 70px;
+    border: solid 2px black
+}
+.green{
+    background-color:rgb(58, 240, 12);
+    display: table-cell;
+    height: 30px;
+    width: 70px;
+    border: solid 2px black
+}
+.blue{
+    background-color:rgb(27, 12, 240);
+    display: table-cell;
+    height: 30px;
+    width: 70px;
+    border: solid 2px black
+}
+.container {
+    background-color: black;
+    width: 924px;
+    height: 770px;
+    position: relative;
+}
+
+.left-dot-1 {
+    background-color: white;
+    width: 13px;
+    height: 13px;
+    box-sizing: border-box;
+    position: absolute;
+    margin: -178px 0px 0px 152px;
+}
+.right-dot-2 {
+    background-color: white;
+    width: 13px;
+    height: 13px;
+    box-sizing: border-box;
+    position: absolute;
+    margin: -178px 0px 0px 722px;
+}
+.bottom-dot-3 {
+    background-color: white;
+    width: 13px;
+    height: 13px;
+    box-sizing: border-box;
+    position: absolute;
+    margin: 35px 0px 0px 69px;
+}
+.paddle {
+    background-color: lightsteelblue;
+    height: 19px;
+    width: 155px;
+    margin: 480px 100px 100px 367px;
+    position: absolute;
+}
+.score{
+    background-color: black
+    color: white
+    display: table-cell;
+    text-align: right;
+    height: 30px;
+{
+    
