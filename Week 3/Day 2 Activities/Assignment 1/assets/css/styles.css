@@ -12,6 +12,7 @@
     height: 30px;
     width: 70px;
     border: solid 2px black
+    
 }
 .yellow{
     background-color:rgb(236, 240, 12);
@@ -36,8 +37,8 @@
 }
 .container {
     background-color: black;
-    width: 924px;
-    height: 770px;
+    width: 1189px;
+    height: 970px;
     position: relative;
 }
 
@@ -72,11 +73,10 @@
     margin: 480px 100px 100px 367px;
     position: absolute;
 }
-.score{
+.score {
     background-color: black
     color: white
     display: table-cell;
     text-align: right;
     height: 30px;
 {
-    
