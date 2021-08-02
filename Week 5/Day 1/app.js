@@ -1,4 +1,4 @@
-const movieURL = 'http://www.omdbapi.com/?s=&apikey=15e4e4ab'
+const movieURL = 'http://www.omdbapi.com/?s=batman&apikey=15e4e4ab'
 
 const searchTerm = document.getElementById("searchTerm")
 const searchButton = document.getElementById("searchButton")
@@ -56,4 +56,4 @@ function post(imdb) {
     request.send()
 }
 
-searchDB('Harry Potter')
+searchDB('batman')
