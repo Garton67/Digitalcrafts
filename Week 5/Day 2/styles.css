@@ -1,0 +1,33 @@
+.title {
+    margin: auto;
+    width: 10%;
+    padding: 0px;
+}
+
+body {
+    background-color: rgb(180, 72, 33);
+}
+
+.orderBar {
+    margin: auto;
+    width: 50%;
+    padding: 0px;
+}
+
+#findOrder {
+    margin: auto;
+    width: 50%;
+    padding: 0px;
+}
+
+.currentOrders {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+#refreshOrders {
+    margin: 450px;
+    width: 50%;
+    padding: 20px;  
+}
