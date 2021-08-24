@@ -4,7 +4,11 @@
 		<title></title>
 	</head>
 	<body>
-	
+
+	<div class="container">
+      {{> menu}}
+
+
 		<h2>Chat</h2>
 		<input type="text" id="usernamebox" placeholder="Username">
 		<input type="text" id="chatMessageTextBox" placeholder="Chat Message:"/>
@@ -12,13 +16,17 @@
 		
 		<ul id="messagesUL">
 			
-			
 		</ul>
 		
 		<script src="/socket.io/socket.io.js"></script>
 		<script>
 			var socket = io()
 		</script>
+
+		</div>
+
 		<script src="/js/client.js"></script>
+		</div>
+			{{> footer}}
 	</body>
 </html>

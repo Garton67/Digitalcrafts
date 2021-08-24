@@ -2,7 +2,13 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const mustacheExpress = require('mustache-express')
-const { v4: uuidv4 } = require('uuid');
+const path = require('path')
+const bodyParser = require('body-parser')
+//const { v4: uuidv4 } = require('uuid');
+//const bcrypt = require('bcrypt')
+const PORT = 3000
+const VIEWS_PATH = path.join(__dirname,'/views')
+
 
 app.engine('mustache', mustacheExpress())
 app.set('views', './views')
@@ -47,6 +53,21 @@ app.get('/chat', (req, res) => {
     res.render('chat')
 })
 
+app.get('/login', (req, res) => {
+    res.render('login')
+})
+
+app.get('/register', (req, res) => {
+    res.render('register')
+})
+
+app.use(bodyParser.urlencoded({ extended: false }))
+
+app.engine('mustache',mustacheExpress(VIEWS_PATH + '/partials','.mustache'))
+app.set('views',VIEWS_PATH)
+app.set('view engine','mustache')
+
+//app.use('/',indexRoutes)
 
 app.post('/add-trip', (req, res) => {
     let tripTitle = req.body.title
@@ -71,8 +92,8 @@ app.get('/remove/:id', (req, res) => {
     trips = trips.filter((trip) => trip.id != removeID)
 
     res.redirect('/')
-})    
-app.listen(3000, () => {
-    console.log('Party Time!')
-})
+})   
+ 
+app.listen(PORT,() => console.log('Server is running...'))
+
 

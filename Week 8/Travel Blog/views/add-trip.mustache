@@ -7,10 +7,10 @@
 </head>
 <body>
 
-<header id="header"></header>
-<section>This is section</section>
 
-<h2>Add A Trip  -  -  <a href="/" >return to trips</a></h2>
+<div class="container">
+      {{> menu}}
+<h2>Add A Trip  </h2>
 <form method="POST" action='/add-trip'>
 <input type="text" placeholder="Trip Name" name="title" />
 <input type="text" placeholder="Image URL" name="image" />
@@ -20,6 +20,8 @@ End Date<input type="date" name="endDate" />
 </form>
 
 
+</div>
+{{> footer}}
   
 <script type="text/javascript" src="navbar.js"></script>  
 </body>

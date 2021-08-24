@@ -4,7 +4,9 @@
 <script type="text/javascript" src="jquery.js"></script>
 </head>
 <body>
-<div id="common-navbar"></div>  
+
+<div class="container">
+      {{> menu}}
 
 <h2>Trips - - - - <a href="/add-trip">Add A Trip</a></h2>
 
@@ -19,10 +21,10 @@
 {{/tripList}}
 </ul>
 
-<header id="header"></header>
-<section>This is section</section>
+</div>
 
- 
+    {{> footer}}
+
 <script type="text/javascript" src="navbar.js"></script>
 </body>
 
