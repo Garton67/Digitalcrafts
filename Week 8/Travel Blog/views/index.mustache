@@ -1,16 +1,22 @@
-<html>
+<html lang="en">
 <head>
+    {{> header}}
+
+    
 <link rel="stylesheet" href="index.css"></link> 
 <script type="text/javascript" src="jquery.js"></script>
 </head>
 <body>
+<h1>Trips</a></h1>
 
 <div class="container">
-      {{> menu}}
+    {{> menu}}
 
-<h2>Trips - - - - <a href="/add-trip">Add A Trip</a></h2>
+
+
 
 <ul>
+
 {{#tripList}}
 <div>
 <div style="background-image: url({{image}}); width: 400px; height:300px; object-fit:contain">
@@ -23,10 +29,10 @@
 
 </div>
 
+
+    
     {{> footer}}
 
-<script type="text/javascript" src="navbar.js"></script>
 </body>
-
 
 </html>

@@ -1,13 +1,11 @@
 const express = require('express')
-const cors = require('cors')
 const app = express()
 const mustacheExpress = require('mustache-express')
 const path = require('path')
-const bodyParser = require('body-parser')
-//const { v4: uuidv4 } = require('uuid');
 //const bcrypt = require('bcrypt')
 const PORT = 3000
 const VIEWS_PATH = path.join(__dirname,'/views')
+const { v4: uuidv4 } = require('uuid');
 
 
 app.engine('mustache', mustacheExpress())
@@ -16,7 +14,6 @@ app.set('view engine', 'mustache')
 
 app.use(express.static("css"))
 
-app.use(cors())
 app.use(express.urlencoded())
 app.use(express.json())
 
@@ -61,7 +58,7 @@ app.get('/register', (req, res) => {
     res.render('register')
 })
 
-app.use(bodyParser.urlencoded({ extended: false }))
+
 
 app.engine('mustache',mustacheExpress(VIEWS_PATH + '/partials','.mustache'))
 app.set('views',VIEWS_PATH)
