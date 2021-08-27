@@ -1,59 +1,111 @@
-const movieURL = 'http://www.omdbapi.com/?s=batman&apikey=15e4e4ab'
+const emailBox = document.getElementById("emailBox")
+const typeBox = document.getElementById("typeBox")
+const sizeBox = document.getElementById("sizeBox")
+const priceBox = document.getElementById("priceBox")
+const addCoffeeOrder = document.getElementById("addCoffeeOrder")
 
-const searchTerm = document.getElementById("searchTerm")
-const searchButton = document.getElementById("searchButton")
+const refreshOrders = document.getElementById("refreshOrders")
+const currentOrders = document.getElementById("currentOrders")
 
-const container = document.getElementById("container")
-const movieList = document.getElementById("movieList")
+const findOrderEmail = document.getElementById("findOrderEmail")
+const submitEmailSearch = document.getElementById("submitEmailSearch")
 
-searchButton.addEventListener('click', function() {
-    searchDB(searchTerm.value)
+submitEmailSearch.addEventListener('click', function() {
+    event.preventDefault()
+
+    const orderemail = findOrderEmail.value
+    let checkOrder = new XMLHttpRequest()
+
+    checkOrder.addEventListener('load', function() {
+        let oneCoffeeOrder = JSON.parse(this.responseText)
+        console.log(oneCoffeeOrder)
+        let oneOrder = `
+        <li class="orderItem"><div class="emailDisplay">
+        ${oneCoffeeOrder.email}</div><div class="orderAndSize">${oneCoffeeOrder.type}  -  ${oneCoffeeOrder.size}</div> 
+        <div class="priceAndDeleteBox"><div class="priceAndDelete">$ ${oneCoffeeOrder.price}</div><div class="priceAndDelete"><button id="completedButton" onClick="completed('${oneCoffeeOrder.email}')">COMPLETED</button></div></div>
+        </li>
+        
+        `
+        currentOrders.innerHTML = oneOrder
+    })
+
+    
+    
+
+
+    checkOrder.open('GET',`https://troubled-peaceful-hell.glitch.me/orders/${orderemail}`)
+    checkOrder.send()
+})
+
+addCoffeeOrder.addEventListener('click', function() {
+
+    event.preventDefault()
+
+    let sendOrder = new XMLHttpRequest()
+
+    sendOrder.addEventListener('load', function() {
+        displayOrders()
+    })
+
+    const email = emailBox.value
+    const type = typeBox.value
+    const size = sizeBox.value
+    const price = priceBox.value
+
+    const coffeeOrder = {
+        email: email,
+        type: type,
+        size: size,
+        price: parseFloat(price)
+    }
+
+    sendOrder.open('POST', 'https://troubled-peaceful-hell.glitch.me/orders')
+    sendOrder.setRequestHeader('Content-Type', 'application/json')
+    sendOrder.send(JSON.stringify(coffeeOrder))
 
 })
 
+function displayOrders() {
+    let getOrders = new XMLHttpRequest()
 
-function searchDB(sItem) {
-    myURL = `http://www.omdbapi.com/?s=${sItem}&apikey=15e4e4ab`
-    let dotRequest = new XMLHttpRequest()
-    dotRequest.addEventListener('load', function () {
-        let posts = JSON.parse(this.responseText)
-        let dotsList = posts.Search.map(function (info) {
-            return `
-        <div class="movieDot">
-        <div class="posterThumb"><img src="${info.Poster}" class="smallPoster"></div>
-        <div class="title"><a href="#movieList" onclick="post('${info.imdbID}')">${info.Title}</a></div>
-        </div>
-        `
-        })
-
-        container.innerHTML = dotsList.join("")
+    getOrders.addEventListener('load', function () {
+        printToClient(this.responseText)
     })
 
-    dotRequest.open('GET', myURL)
-    dotRequest.send()
+
+    getOrders.open('GET','https://troubled-peaceful-hell.glitch.me/orders')
+    getOrders.send()
 }
 
-function post(imdb) {
-    imdbURL = `http://www.omdbapi.com/?i=${imdb}&apikey=15e4e4ab`
-    let request = new XMLHttpRequest()
-
-    request.addEventListener('load', function () {
-        let posts = JSON.parse(this.responseText)
-        let postsUL = `
-        <div class="mainAttraction">
-        <img src="${posts.Poster}" class="largePoster">
-        <div class="mainInfoBox">
-        <div class="mainTitle">${posts.Title}</div>
-        <div class="mainRelease">${posts.Released}</div>
-        <div class="mainRated">${posts.Rated}</div>
-        </div>
-        </div>
+function printToClient(orders) {
+    let CoffeeOrders = JSON.parse(orders)
+    let listCoffeeItmes = CoffeeOrders.map(function (order) {
+        return `
+        <li class="orderItem"><div class="emailDisplay">
+        ${order.email}</div><div class="orderAndSize">${order.type}  -  ${order.size}</div> 
+        <div class="priceAndDeleteBox"><div class="priceAndDelete">$ ${order.price}</div><div class="priceAndDelete"><button id="completedButton" onClick="completed('${order.email}')">COMPLETED</button></div></div>
+        </li>
+        
         `
-        movieList.innerHTML = postsUL
-
     })
-    request.open('get', imdbURL)
-    request.send()
+
+    currentOrders.innerHTML = listCoffeeItmes.join("")
+
 }
 
-searchDB('batman')
+refreshOrders.addEventListener('click', function () {
+    displayOrders()
+})
+
+function completed(orderToRemove) {
+    let completedOrder = new XMLHttpRequest()
+
+    completedOrder.addEventListener('load', function() {
+        displayOrders()
+    })
+    completedOrder.open('DELETE',`https://troubled-peaceful-hell.glitch.me/orders/${orderToRemove}`)
+    completedOrder.send()
+
+}
+
+displayOrders()
